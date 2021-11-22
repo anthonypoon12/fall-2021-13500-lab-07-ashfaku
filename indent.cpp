@@ -26,13 +26,7 @@ int main()
 	string s;
 	int tab = 0;
 	string line = "", original = "";
-	std::ifstream file("bad-code.cpp");
-    if (file.fail())
-    {
-        std::cerr<<"Can't be read!\n";
-        exit(1);
-    }
-	while (getline(file, s))
+	while (getline(cin, s))
 	{
 		string r = removeLeadingSpaces(s);
 		int open = countChar(s, '{'), close = countChar(s, '}');
@@ -43,11 +37,10 @@ int main()
 		line += "\n";
 	}
 	cout << line << endl;
-	std::ofstream file1;
-	file1.open("fixed.cpp");
-	file1 << line;
+	std::ofstream file;
+	file.open("fixed.cpp");
+	file << line;
 	file.close();
-	file1.close();
 	return 0;
 }
 
